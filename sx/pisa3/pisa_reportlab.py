@@ -319,6 +319,8 @@ class PmlImageReader(object):
                 self.mode = 'RGB'
             else:
                 im = self._image
+                # explicit load, see: http://mail.python.org/pipermail/image-sig/2006-January/003742.html
+                im.load()
                 mode = self.mode = im.mode
                 if mode == 'RGBA':
                     self._dataA = PmlImageReader(im.split()[3])
